@@ -2,17 +2,13 @@
   <thead>
     <th>Emma</th>
   </thead>
-
+  <!--  {{i + 1}}) {{movie.snippet.title}} -->
   <tbody>
-    <tr *ngFor="let movie of (movies$ | async); index as i" (click)="openSingleFilm(movie)">
-      <td>{{i + 1}}) {{movie.snippet.title}}</td>
+    <tr *ngFor="let movie of (movies$ | async); index as i">
+      <td [routerLink]="['/movie', movie.snippet.resourceId.videoId]"  (click)="openSingleFilm(movie)">
+        {{i + 1}}) {{movie.snippet.title}}
+      </td>
     </tr>
   </tbody>
 
 </table>
-
-
-<!-- 
-<p *ngFor="let movie of (movies$ | async); index as i ">
-  {{i + 1}}) {{movie.snippet.title}}
-</p> -->

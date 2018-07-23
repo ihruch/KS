@@ -3,13 +3,12 @@ import { IVideo } from '../model/video.interface';
 
 export interface IVideoState {
   movies: IVideo[];
+  selected: number;
 }
-export interface IChannelState {
-  channel: Object[];
-}
-export const initState = {
-  channel: [],
-  movies: []
+
+export const initState: IVideoState = {
+  movies: [],
+  selected: 0
 };
 
 export const videoState = createFeatureSelector<IVideoState>('video');

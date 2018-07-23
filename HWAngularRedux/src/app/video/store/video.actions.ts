@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { IReduce } from './../model/reducer.interface';
+import { IVideo } from './../model/video.interface';
 
 export const VideoActionsType = {
   GetData: '[Videos] Get initial data',
@@ -13,17 +13,17 @@ export class GetData implements Action {
 
 export class GetChannel implements Action {
   readonly type = VideoActionsType.GetChannel;
-  constructor(public payload: []) {}
+  constructor(public payload: IVideo[]) {}
 }
 
 export class GetVideos implements Action {
   readonly type = VideoActionsType.GetVideos;
-  constructor(public payload: []) {}
+  constructor(public payload: IVideo[]) {}
 }
 
 export class GetVideoComment implements Action {
   readonly type = VideoActionsType.GetVideoComment;
-  constructor(public payload: []) {}
+  constructor(public payload: IVideo[]) {}
 }
 
 export type VideoAction = GetData | GetChannel | GetVideos | GetVideoComment;

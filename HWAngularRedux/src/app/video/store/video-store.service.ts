@@ -19,6 +19,13 @@ export class VideoStoreService {
   selectVideos() {
     return this.store$.pipe(select(Selector.selectVideos));
   }
+  
+  selectSingleVideo() {
+    return this.store$.pipe(
+       select()
+    )
+  }
+
 }
 
 /*************************************************** */
