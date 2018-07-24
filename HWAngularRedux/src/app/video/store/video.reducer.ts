@@ -2,7 +2,6 @@ import { VideoActionsType, VideoAction } from './video.actions';
 
 import { initState } from './video.state';
 
-
 export function Reducer(state = initState, action: VideoAction) {
   switch (action.type) {
     case VideoActionsType.GetData: {
@@ -22,6 +21,12 @@ export function Reducer(state = initState, action: VideoAction) {
       return {
         ...state,
         movies: action.payload
+      };
+    }
+
+    case VideoActionsType.GetSingleVideo: {
+      return {
+        ...state
       };
     }
 

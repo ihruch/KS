@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { VideoStoreService } from '../../store/video-store.service';
+import { VideoItemComponent } from './video-item/video-item.component';
+import { tap, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-video-list',
@@ -8,20 +10,17 @@ import { VideoStoreService } from '../../store/video-store.service';
   styleUrls: ['./video-list.component.css']
 })
 export class VideoListComponent implements OnInit {
-  idChannel: string;
   movies$;
-  movie;
+  moviesNEW$;
 
   constructor(private videoStoreService: VideoStoreService) {}
 
   ngOnInit() {
-    this.videoStoreService.dispatchGetVideos();
+    this.videoStoreService.dispatchGetData();
     this.movies$ = this.videoStoreService.selectVideos();
 
-    this.movies$.subscribe(data => console.log(data));
-  }
+    // this.moviesNEW$ = this.videoStoreService.getItemMovie();
 
-  openSingleFilm(movie) {
-    this.movie = movie;
+    // this.moviesNEW$.subscribe(data => console.log(data));
   }
 }

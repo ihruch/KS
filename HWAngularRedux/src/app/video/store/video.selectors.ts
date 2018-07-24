@@ -1,12 +1,6 @@
 import { createSelector, State } from '@ngrx/store';
 import { IVideoState, videoState } from './video.state';
 
-export const selectVideos = createSelector(
-  videoState,
-  state => state.movies['items']
-);
+export const selectVideos = createSelector(videoState, state => state.movies);
 
-export const selectSingleVideo = createSelector(
-  videoState,
-  state => state.selected
-);
+export const selectChannel = createSelector(videoState, state => state.channel);

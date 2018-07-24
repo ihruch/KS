@@ -14,11 +14,19 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getDataChannel() {
-    return this.http.get(this.apiURLChannel);
+    return this.http.get(this.apiURLChannel).pipe(
+      map(item => {
+        return item['items'];
+      })
+    );
   }
 
   getDataPlayList(id) {
-    return this.http.get(`${this.apiURLPlayList}${id}`);
+    return this.http.get(`${this.apiURLPlayList}${id}`).pipe(
+      map(movies => {
+        return movies['items'];
+      })
+    );
   }
 
   getDataComments() {}

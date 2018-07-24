@@ -5,15 +5,17 @@ export const VideoActionsType = {
   GetData: '[Videos] Get initial data',
   GetChannel: '[Videos] Get Channel',
   GetVideos: '[Videos] Get playlist movies',
+  GetSingleVideo: '[Videos] Get single movie',
   GetVideoComment: '[Video] Get comment video'
 };
+
 export class GetData implements Action {
   readonly type = VideoActionsType.GetData;
 }
 
 export class GetChannel implements Action {
   readonly type = VideoActionsType.GetChannel;
-  constructor(public payload: IVideo[]) {}
+  constructor(public payload) {}
 }
 
 export class GetVideos implements Action {
@@ -21,9 +23,18 @@ export class GetVideos implements Action {
   constructor(public payload: IVideo[]) {}
 }
 
-export class GetVideoComment implements Action {
-  readonly type = VideoActionsType.GetVideoComment;
-  constructor(public payload: IVideo[]) {}
+export class GetSingleVideo implements Action {
+  readonly type = VideoActionsType.GetSingleVideo;
 }
 
-export type VideoAction = GetData | GetChannel | GetVideos | GetVideoComment;
+export class GetVideoComment implements Action {
+  readonly type = VideoActionsType.GetVideoComment;
+  constructor(public payload) {}
+}
+
+export type VideoAction =
+  | GetData
+  | GetChannel
+  | GetVideos
+  | GetSingleVideo
+  | GetVideoComment;
