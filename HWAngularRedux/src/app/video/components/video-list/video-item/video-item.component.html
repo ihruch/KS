@@ -1,0 +1,27 @@
+<table>
+  <tr>
+    <td>
+      <h2> {{film['0'].snippet.title}} </h2>
+  </tr>
+  <tr>
+    <td>
+      <!-- <iframe src="https://www.youtube.com/embed/ + {{film[ '0'].snippet.resourceId.videoId}}"></iframe> -->
+      <iframe src="https://www.youtube.com/embed/Q-G8oSGZVDI"></iframe>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      {{film['0'].snippet.channelTitle}}
+    </td>
+  </tr>
+  <tr>
+    <td [ngClass]="{'hideBlock': isHideBlock}">
+      <p>
+        {{film['0'].snippet.description}}
+      </p>
+    </td>
+  </tr>
+</table>
+
+
+<button (click)='btnBack()'>BACK</button>
