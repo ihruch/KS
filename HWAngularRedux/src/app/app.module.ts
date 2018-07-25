@@ -5,7 +5,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VideoListModule } from './video/components/video-list/video-list.module';
@@ -19,6 +19,7 @@ import { StoreModule, ActionReducerMap, MetaReducer } from '@ngrx/store';
   imports: [
     BrowserModule,
     HttpClientModule,
+    MaterialModule,
     VideoListModule,
     AppRoutingModule,
     StoreModule.forRoot({}),

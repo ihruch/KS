@@ -29,27 +29,32 @@ export class VideoStoreService {
   dispatchGetData() {
     this.dispatchAction(new Action.GetData());
   }
-  dispatchGetVideos() {
-    this.dispatchAction(new Action.GetVideos());
+
+  dispatchGetSingleMovie() {
+    this.dispatchAction(new Action.GetSingleVideo());
+  }
+
+  dispatchReturnToPlayList() {
+    this.dispatchAction(new Action.ReturnToPlayList());
   }
 
   selectVideos(): Observable<IVideo[]> {
     return this.store$.pipe(select(Selector.selectVideos));
   }
 
+  selectChanell(): Observable<IVideo[]> {
+    return this.store$.pipe(select(Selector.selectChannel));
+  }
+
   getItemMovie(id: number | string) {
     return this.store$.pipe(select(Selector.selectVideos)).pipe(
       map(heroes =>
         heroes.filter(singleMovie => {
-          let idMovie = singleMovie.snippet['resourceId']['videoId'];
+          const idMovie = singleMovie['snippet']['resourceId']['videoId'];
           return idMovie === id;
         })
       )
     );
-  }
-
-  selectChanell(): Observable<IVideo[]> {
-    return this.store$.pipe(select(Selector.selectChannel));
   }
 } // end class
 

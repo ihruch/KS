@@ -2,8 +2,9 @@
   <thead>
     <th>Emma</th>
   </thead>
-  
+
   <tbody>
+
     <tr *ngFor="let movie of (movies$ | async); index as i">
       <td [routerLink]="['/movie', movie.snippet.resourceId.videoId]">
         {{i + 1}}) {{movie.snippet.title}}

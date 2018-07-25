@@ -53,5 +53,5 @@ export class VideoEffects {
     map(movies => {
       return new Action.GetVideos(movies);
     })
-  );
+  ); // end pipe
 } // end MODULE

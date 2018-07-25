@@ -6,6 +6,7 @@ export const VideoActionsType = {
   GetChannel: '[Videos] Get Channel',
   GetVideos: '[Videos] Get playlist movies',
   GetSingleVideo: '[Videos] Get single movie',
+  ReturnToPlayList: '[Videos] Return to playlist movies',
   GetVideoComment: '[Video] Get comment video'
 };
 
@@ -27,6 +28,10 @@ export class GetSingleVideo implements Action {
   readonly type = VideoActionsType.GetSingleVideo;
 }
 
+export class ReturnToPlayList implements Action {
+  readonly type = VideoActionsType.ReturnToPlayList;
+}
+
 export class GetVideoComment implements Action {
   readonly type = VideoActionsType.GetVideoComment;
   constructor(public payload) {}
@@ -37,4 +42,5 @@ export type VideoAction =
   | GetChannel
   | GetVideos
   | GetSingleVideo
+  | ReturnToPlayList
   | GetVideoComment;

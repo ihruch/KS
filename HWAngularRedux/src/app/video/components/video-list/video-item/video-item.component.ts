@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { Router, ActivatedRoute, paramMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { VideoStoreService } from '../../../store/video-store.service';
 import { IVideo } from '../../../model/video.interface';
 
@@ -14,6 +14,8 @@ export class VideoItemComponent implements OnInit {
   film = {};
   isHideBlock = false;
   movieID$;
+  urlScreen = 'https://www.youtube.com/embed/';
+  temp$;
 
   private selectedId: string;
 
@@ -24,14 +26,15 @@ export class VideoItemComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.videoStoreService.dispatchGetSingleMovie();
+
     this.movieID$ = this.route.paramMap.pipe(
-      switchMap((params: paramMap) => {
+      switchMap(params => {
         return this.videoStoreService.getItemMovie(params.get('id'));
       })
     );
     this.movieID$.subscribe(data => {
       console.log(data);
-      this.film = data;
     });
   }
 

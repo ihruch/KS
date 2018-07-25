@@ -13,14 +13,14 @@ export function Reducer(state = initState, action: VideoAction) {
     case VideoActionsType.GetChannel: {
       return {
         ...state,
-        channel: action.payload
+        channel: action['payload']
       };
     }
 
     case VideoActionsType.GetVideos: {
       return {
         ...state,
-        movies: action.payload
+        movies: action['payload']
       };
     }
 
