@@ -15,9 +15,10 @@ export class VideoItemComponent implements OnInit {
   isHideBlock = false;
   movieID$;
   urlScreen = 'https://www.youtube.com/embed/';
-  temp$;
 
+  panelOpenState = false;
   private selectedId: string;
+  isTrue = true;
 
   constructor(
     private router: Router,

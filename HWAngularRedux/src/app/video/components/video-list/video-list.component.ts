@@ -13,6 +13,9 @@ export class VideoListComponent implements OnInit {
   movies$;
   dataMovies = [];
 
+  dataSource = this.dataMovies;
+  displayedColumns: string[] = ['nameVideos'];
+
   constructor(private videoStoreService: VideoStoreService) {}
 
   ngOnInit() {

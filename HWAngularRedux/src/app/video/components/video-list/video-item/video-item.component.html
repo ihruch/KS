@@ -1,24 +1,19 @@
-<table *ngFor="let movie of (movieID$ | async) ">
-  <tr>
-    <td>
-      <h2>{{movie.snippet.title}}</h2>
-    </td>
-  </tr>
+<mat-card *ngFor='let movie of ( movieID$ | async)'>
 
-  <tbody>
-    <tr>
-      <td>
-        <iframe src="{{urlScreen}}{{movie.snippet.resourceId.videoId}}"></iframe>
-      </td>
-    </tr>
+  <mat-card-title>
+    {{movie.snippet.title}}
+  </mat-card-title>
 
-    <tr>
-      <td>Name Channel: {{movie.snippet.channelTitle}}</td>
-    </tr>
+  <mat-card-content>
+    <iframe src="https://www.youtube.com/embed/{{movie.snippet.resourceId.videoId}}"></iframe>
+  </mat-card-content>
 
-    <tr>
-      <td> {{movie.snippet.description | slice:0:220 }}...</td>
-    </tr>
-  </tbody>
-</table>
-<button (click)='btnBack()'>BACK</button>
+  <mat-card-content>
+    {{movie.snippet.channelTitle}}
+  </mat-card-content>
+
+  <mat-card-content>
+    {{movie.snippet.description}}
+  </mat-card-content>
+
+  <mat-card>
