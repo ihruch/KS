@@ -1,19 +1,48 @@
-<mat-card *ngFor='let movie of ( movieID$ | async)'>
+<mat-card *ngFor='let movie of ( movieID$ | async)' [class.main-block]='isTrue'>
 
-  <mat-card-title>
+  <mat-card-title [class.title-icon-block]='isTrue'>
+    <button mat-icon-button color="tomato" (click)="btnBack()">
+      <i class="small material-icons">
+        arrow_back
+      </i>
+    </button>
+
     {{movie.snippet.title}}
   </mat-card-title>
 
   <mat-card-content>
-    <iframe src="https://www.youtube.com/embed/{{movie.snippet.resourceId.videoId}}"></iframe>
+    <iframe [src]="srcIframe"></iframe>
   </mat-card-content>
 
   <mat-card-content>
-    {{movie.snippet.channelTitle}}
+
+    <span class="channel-title-block">[channel]</span> {{movie.snippet.channelTitle}}
   </mat-card-content>
 
-  <mat-card-content>
-    {{movie.snippet.description}}
-  </mat-card-content>
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{panelOpenState ? 'СКРЫТЬ' : 'ПОКАЗАТЬ ЕЩЕ'}}
+        </mat-panel-title>
+
+        <mat-panel-description>
+          подробное описание
+        </mat-panel-description>
+
+      </mat-expansion-panel-header>
+
+      <p>{{movie.snippet.description}}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <!-- <mat-card-content>
+    <mat-card-title>
+      тут будут комменты к видео
+    </mat-card-title>
+  </mat-card-content> -->
+
 
   <mat-card>
+
+    <!-- {{movie.snippet.resourceId.videoId}} -->

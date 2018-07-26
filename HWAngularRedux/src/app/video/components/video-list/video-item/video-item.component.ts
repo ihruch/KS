@@ -1,4 +1,17 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import {
+  DomSanitizer,
+  SafeResourceUrl,
+  SafeUrl
+} from '@angular/platform-browser';
+
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  ViewChild,
+  ElementRef
+} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { VideoStoreService } from '../../../store/video-store.service';
 import { IVideo } from '../../../model/video.interface';
@@ -13,17 +26,19 @@ import { switchMap, tap } from 'rxjs/operators';
 export class VideoItemComponent implements OnInit {
   film = {};
   isHideBlock = false;
-  movieID$;
-  urlScreen = 'https://www.youtube.com/embed/';
-
-  panelOpenState = false;
-  private selectedId: string;
   isTrue = true;
+  movieID$;
+  srcIframe; //vDMJVrVY3ME
+  panelOpenState = false;
+  singleMovie: IVideo[];
+
+  @ViewChild('mainblock') private block: ElementRef;
 
   constructor(
     private router: Router,
     private videoStoreService: VideoStoreService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {
@@ -36,7 +51,14 @@ export class VideoItemComponent implements OnInit {
     );
     this.movieID$.subscribe(data => {
       console.log(data);
+      this.singleMovie = data;
     });
+    this.srcIframe = this.sanitizer.bypassSecurityTrustResourceUrl(
+      `https://www.youtube.com/embed/${
+        this.singleMovie['0'].snippet.resourceId.videoId
+      }`
+    );
+    console.log(this.srcIframe);
   }
 
   btnBack() {

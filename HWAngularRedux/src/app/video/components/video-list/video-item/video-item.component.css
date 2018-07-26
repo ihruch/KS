@@ -1,4 +1,4 @@
-.example-card {
+.main-block {
   max-width: 70%;
   min-width: 350px;
   margin: auto;
@@ -11,6 +11,20 @@ iframe {
   font-size: 20px !important;
   font-weight: bold;
 }
-.channel-title {
-  font-weight: bold;
+.channel-title-block {
+  text-transform: uppercase;
+  color: #abab;
+}
+.mat-button {
+  font-size: 1px;
+  color: #111;
+}
+.title-icon-block {
+  display: flex;
+  align-items: center;
+}
+.title-icon-block i {
+  border: 1px solid #000;
+  border-radius: 50%;
+  background-color: tomato;
 }
